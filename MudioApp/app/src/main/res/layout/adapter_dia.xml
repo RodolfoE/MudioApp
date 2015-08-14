@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:gravity="center"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:paddingLeft="7dp"
+        android:layout_weight="3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Puxada frente"
+            android:id="@+id/dia_nome_ex"
+            android:singleLine="true"
+            android:textColor="#000000"
+            />
+
+        <TextView
+            android:id="@+id/series"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/series"
+            android:layout_below="@+id/dia_nome_ex"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            />
+        <TextView
+            android:id="@+id/dia_series"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:layout_toRightOf="@+id/series"
+            android:layout_alignBaseline="@+id/series"
+            android:layout_marginLeft="5dp"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            />
+        <TextView
+            android:id="@+id/repeticoes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/series"
+            android:text="@string/repeticoes"
+            android:layout_marginRight="5dp"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12"
+            android:layout_toRightOf="@+id/repeticoes"
+            android:layout_alignBaseline="@id/repeticoes"
+            android:textSize="18sp"
+            android:id="@+id/dia_repeticoes"
+            android:textColor="#000000"
+            />
+
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/objetivo"
+            android:layout_below="@+id/repeticoes"
+            android:textColor="#000000"
+            android:id="@+id/obj"/>
+
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30kg"
+            android:layout_toRightOf="@id/obj"
+            android:layout_alignBaseline="@+id/obj"
+            android:paddingLeft="5dp"
+            android:textColor="#000000"
+            android:id="@+id/dia_obj"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1.5"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/aumentar_peso"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:src="@drawable/download"
+            android:textColor="#000000"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/dia_peso"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="40sp"
+            android:text="20"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="P"
+                android:textSize="40dp"
+                android:textColor="#000000"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/diminuir_peso"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:src="@drawable/downward"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
