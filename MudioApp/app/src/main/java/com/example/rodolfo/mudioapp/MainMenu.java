@@ -1,12 +1,12 @@
 package com.example.rodolfo.mudioapp;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -34,7 +34,7 @@ import java.util.Calendar;
  * Created by Rodolfo on 22/06/2015.
  */
 public class MainMenu extends ActionBarActivity {
-
+    private int aux = 0;
 
     private final String DIA1 = "Dia 1";
     private final String DIA2 = "Dia 2";
@@ -73,15 +73,27 @@ public class MainMenu extends ActionBarActivity {
                 long elapsedTime =  System.currentTimeMillis() - mTimeStart ;
                 Log.d("TesteOff", elapsedTime + "");
                 if (elapsedTime < 2300){
-                    Log.d("TesteOff - inside", elapsedTime + "");
+                    Handler handler = new Handler();
+
+                    recursao(0);
+
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Vibrator vibrator = (Vibrator) MainMenu.this.getSystemService(Context.VIBRATOR_SERVICE);
+                            vibrator.vibrate(1000);
+                        }
+                    }, 50000);
+
+
+
+                    /*Log.d("TesteOff - inside", elapsedTime + "");
                     Intent intent1 = new Intent("Disparar");
                     PendingIntent pintent = PendingIntent.getBroadcast(MainMenu.this, 0, intent1, 0);
 
                     AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
-                    alarm.set(AlarmManager.RTC, getTime(), pintent);
-
-
+                    alarm.set(AlarmManager.RTC, getTime(), pintent);*/
                 }
 
             }
@@ -90,12 +102,29 @@ public class MainMenu extends ActionBarActivity {
         setDay();
     }
 
+    private void recursao(int aux){
+        Handler handler = new Handler();
+
+        if (aux < 50){
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    MainMenu.this.aux += 5;
+                    Toast.makeText(MainMenu.this, MainMenu.this.aux + " seconds", Toast.LENGTH_SHORT).show();
+                    recursao(MainMenu.this.aux);
+                }
+            }, 5000);
+        } else {
+            MainMenu.this.aux = 0;
+        }
+    }
+
     private void setDay(){
         DateTime today = new DateTime();
 
-        Toast.makeText(this, today.dayOfWeek().getAsText(), Toast.LENGTH_LONG).show();
+       /* Toast.makeText(this, today.dayOfWeek().getAsText(), Toast.LENGTH_LONG).show();
         Toast.makeText(this, today.dayOfWeek().getAsText().toString()  +  " | sexta-feira = " + (today.dayOfWeek().getAsText().toString().equals("sexta-feira")), Toast.LENGTH_LONG).show();
-
+*/
 
         if (today.dayOfWeek().getAsText().toString() == "segunda-feira" || today.dayOfWeek().getAsText().toString() == "quinta-feira"){
             setFragment1(new Dia2(), "dia2");

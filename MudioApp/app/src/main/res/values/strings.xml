@@ -13,4 +13,7 @@
     <string name="series">Series:</string>
     <string name="repeticoes">Repetições:</string>
     <string name="objetivo">Objetivo:</string>
+    <string name="title_activity_main_menu2">MainMenu2</string>
+    <string name="navigation_drawer_open">Gym up and running!</string>
+    <string name="navigation_drawer_close">Gym is still up and running</string>
 </resources>
